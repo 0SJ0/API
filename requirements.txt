@@ -2,4 +2,4 @@ pandas
 matplotlib
 sklearn
 Pillow
-urllib
+urllib3
