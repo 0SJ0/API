@@ -28,15 +28,15 @@ df=df.iloc[:,0:]
 #Application
 app = Flask(__name__)
 
-@app.route('https://score-credit-api.herokuapp.com/')
+@app.route('/')
 def hello_world():
     return 'Bienvenue sur le modèle de scoring'
 
-@app.route('https://score-credit-api.herokuapp.com/ID')
+@app.route('/ID')
 def ID():
     return 'ID du client'
 
-@app.route('https://score-credit-api.herokuapp.com/ID/<id>', methods=['GET'])
+@app.route('/ID/<id>', methods=['GET'])
 def Prediction(id):
     ID=int(id) #100194
     index=df[df["SK_ID_CURR"]==ID].index.values[0]
