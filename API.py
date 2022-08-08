@@ -2,7 +2,7 @@
 import numpy as np
 from flask import Flask, request, jsonify
 import pickle
-import requests
+#import requests
 import pandas as pd
 from flask import Flask, request
 import urllib.request as urllib2
