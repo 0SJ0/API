@@ -20,7 +20,7 @@ a=1
 try :
     target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav"
     fichier= urllib2.urlopen(target_url)
-    #model = pd.read_pickle(fichier)
+    model = pd.read_pickle(fichier)
     a=1
 except : 
     print(pickle.load)
