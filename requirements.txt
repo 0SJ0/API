@@ -5,3 +5,4 @@ flask
 gunicorn
 numpy
 urllib3
+requests
