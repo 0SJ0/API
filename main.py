@@ -7,7 +7,7 @@ import requests
 app = Flask(__name__)
 
 #Chargement Modèle
-filename = 'Data/model.sav'
+filename = 'model.sav'
 model = pickle.load(open(filename, 'rb'))
 
 
