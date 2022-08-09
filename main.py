@@ -1,8 +1,6 @@
 import numpy as np
-from flask import Flask, request, jsonify
-import pickle
-import requests
-import urllib.request as urllib2
+#from flask import Flask, request, jsonify
+#import pickle
 
 
 app = Flask(__name__)
