@@ -5,6 +5,10 @@ import pandas as pd
 
 app = Flask(__name__)
 
+#Chargement Modèle
+filename = 'DATA/model.sav'
+model = pickle.load(open(filename, 'rb'))
+
 
 @app.route('/')
 def index():
