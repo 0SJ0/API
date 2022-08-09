@@ -39,4 +39,4 @@ def index():
     if(a==1) :
         return 'No hello, world'
     else :
-        return 'No hello, world'
+        return 'hello, world'
