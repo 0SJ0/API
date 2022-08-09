@@ -4,7 +4,6 @@ import pandas as pd
 import requests
 import urllib.request as urllib2
 import pickle
-import sklearn
 
 app = Flask(__name__)
 
