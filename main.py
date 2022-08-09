@@ -13,9 +13,7 @@ app = Flask(__name__)
 
 #model = pickle.load(open('model.pkl', 'rb'))
 a=1
-target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav"
-fichier= urllib2.urlopen(target_url)
-model = pd.read_pickle(fichier)
+
 
 try :
     target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav"
