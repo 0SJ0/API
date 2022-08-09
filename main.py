@@ -7,7 +7,8 @@ import urllib.request as urllib2
 app = Flask(__name__)
 
 #Chargement Modèle
-filename = 'https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav'
+target_url= 'https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav'
+filename = urllib2.urlopen(target_url)
 model = pickle.load(open(filename, 'rb'))
 
 #Chargement dataset
