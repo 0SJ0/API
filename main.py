@@ -13,13 +13,14 @@ app = Flask(__name__)
 
 #model = pickle.load(open('model.pkl', 'rb'))
 a=1
-
+target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav"
+fichier= urllib2.urlopen(target_url)
+model = pd.read_pickle(fichier)
 
 try :
     target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav"
     fichier= urllib2.urlopen(target_url)
     model = pd.read_pickle(fichier)
-
     a=1
 except : 
     print(pickle.load)
@@ -29,7 +30,6 @@ except :
 
 
 #Chargement dataset
-
 target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/df_Xvalidation.txt"
 data = urllib2.urlopen(target_url) # it's a file like object and works just like a file
 df = pd.read_csv(data, sep=',',index_col=0)
