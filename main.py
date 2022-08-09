@@ -5,7 +5,13 @@ import pandas as pd
 import requests
 import urllib.request as urllib2
 
+app = Flask(__name__)
 
+#Chargement Modèle
+#target_url= 'https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav'
+#filename = urllib2.urlopen(target_url)
+
+#model = pickle.load(open('model.pkl', 'rb'))
 a=1
 
 
@@ -19,14 +25,6 @@ except :
     print(pickle.load)
     a=0
 
-app = Flask(__name__)
-
-#Chargement Modèle
-#target_url= 'https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav'
-#filename = urllib2.urlopen(target_url)
-
-#model = pickle.load(open('model.pkl', 'rb'))
-print(pickle.load)
 
 
 
