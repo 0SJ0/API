@@ -13,17 +13,18 @@ app = Flask(__name__)
 #model = pickle.load(open('model.pkl', 'rb'))
 print(pickle.load)
 
-a=0
+a=1
+
 
 try :
     target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav"
     fichier= urllib2.urlopen(target_url)
     model = pd.read_pickle(fichier)
 
-    a=0
+    a=1
 except : 
     print(pickle.load)
-    a=1
+    a=0
 
 #Chargement dataset
 
@@ -37,6 +38,6 @@ df=df.iloc[:,0:]
 @app.route('/')
 def index():
     if(a==1) :
-        return 'No hello, world'
+        return 'YES WORK'
     else :
-        return 'hello, world'
+        return 'NO WORK'
