@@ -57,6 +57,7 @@ def Prediction(id):
     df=df.iloc[:,0:]
     ID=int(id) #100194
     try :
+        ID=int(id) #100194
         index=df[df["SK_ID_CURR"]==ID].index.values[0] #102616
         #index=1
     except :
