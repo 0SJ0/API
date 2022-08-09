@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 import urllib.request as urllib2
 import pickle
-
+app = Flask(__name__)
 
 
 #Chargement Modèle
@@ -34,7 +34,7 @@ df = pd.read_csv(data, sep=',',index_col=0)
 df=df.reset_index(drop=True)
 df=df.iloc[:,0:]
 
-app = Flask(__name__)
+
 
 
 @app.route('/')
@@ -52,8 +52,8 @@ def ID():
 def Prediction(id):
     ID=int(id) #100194
     try :
-        #index=df[df["SK_ID_CURR"]==ID].index.values[0] #102616
-        index=1
+        index=df[df["SK_ID_CURR"]==ID].index.values[0] #102616
+        #index=1
     except :
         index=0
     proba=index
