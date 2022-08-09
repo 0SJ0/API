@@ -9,6 +9,6 @@ requests
 itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
-Werkzeug==0.15.5
+Werkzeug==2.2.2
 scipy==0.15.1
 
