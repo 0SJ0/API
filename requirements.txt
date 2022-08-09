@@ -1,8 +1,8 @@
 pandas==1.4.3
-matplotlib
-sklearn
+matplotlib==3.5.2
+scikit-learn==1.1.2
 flask==2.2.2
-gunicorn
+gunicorn==20.1.0
 numpy
 urllib3
 requests
