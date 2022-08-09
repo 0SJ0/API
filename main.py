@@ -17,6 +17,7 @@ a=0
 
 try :
     test_model=pickle.load(open('model.pkl', rb))
+    a=0
 except : 
     print(pickle.load)
     a=1
@@ -31,6 +32,15 @@ df=df.iloc[:,0:]
 
 
 @app.route('/')
+
+try :
+    test_model=pickle.load(open('model.pkl', rb))
+    a=0
+except : 
+    print(pickle.load)
+    a=1
+    
+
 def index():
     if(a==1) :
         return 'No hello, world'
