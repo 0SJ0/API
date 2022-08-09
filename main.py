@@ -13,6 +13,8 @@ app = Flask(__name__)
 #model = pickle.load(open('model.pkl', 'rb'))
 print(pickle.load)
 
+test_model=pickle.load(open('model.pkl', rb))
+
 #Chargement dataset
 
 target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/df_Xvalidation.txt"
