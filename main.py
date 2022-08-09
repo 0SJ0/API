@@ -13,7 +13,13 @@ app = Flask(__name__)
 #model = pickle.load(open('model.pkl', 'rb'))
 print(pickle.load)
 
-test_model=pickle.load(open('model.pkl', rb))
+a=0
+
+try :
+    test_model=pickle.load(open('model.pkl', rb))
+except : 
+    print(pickle.load)
+    a=1
 
 #Chargement dataset
 
@@ -26,4 +32,7 @@ df=df.iloc[:,0:]
 
 @app.route('/')
 def index():
-    return 'hello, world'
+    if(a==1) :
+        return 'No hello, world'
+    else :
+        return 'No hello, world'
