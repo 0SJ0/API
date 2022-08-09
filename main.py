@@ -53,7 +53,7 @@ def Prediction(id):
     ID=int(id) #100194
     try :
         #index=df[df["SK_ID_CURR"]==ID].index.values[0] #102616
-        a=1
+        index=1
     except :
         index=0
     proba=index
