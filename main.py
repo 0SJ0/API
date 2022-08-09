@@ -40,4 +40,4 @@ def index():
     if(a==1) :
         return 'YES WORK'
     else :
-        return 'NO WORK'
+        return 'NO NO WORK'
