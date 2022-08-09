@@ -16,7 +16,10 @@ print(pickle.load)
 a=0
 
 try :
-    test_model=pickle.load(open('model.pkl', rb))
+    target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav"
+    fichier= urllib2.urlopen(target_url)
+    model = pd.read_pickle(fichier)
+
     a=0
 except : 
     print(pickle.load)
