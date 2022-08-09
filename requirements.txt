@@ -1,7 +1,7 @@
 pandas==1.4.3
 matplotlib
 sklearn
-flask
+flask==2.2.2
 gunicorn
 numpy
 urllib3
@@ -10,5 +10,5 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
 Werkzeug==0.15.5
-scipy>=0.15.1
+scipy==0.15.1
 
