@@ -5,7 +5,7 @@ import requests
 import urllib.request as urllib2
 import pickle
 
-app = Flask(__name__)
+
 
 #Chargement Modèle
 #target_url= 'https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav'
@@ -33,6 +33,8 @@ data = urllib2.urlopen(target_url) # it's a file like object and works just like
 df = pd.read_csv(data, sep=',',index_col=0)
 df=df.reset_index(drop=True)
 df=df.iloc[:,0:]
+
+app = Flask(__name__)
 
 
 @app.route('/')
