@@ -56,13 +56,10 @@ def Prediction(id):
         if (score>60) : defaut_credit=1
         return jsonify({'Score' : score, "Defaut_credit" : defaut_credit})
     except :
-        return S3_connexion+"erreur"
+        return jsonify({"erreur" : S3_connexion})
     
     
-    
-    
-df.SK_ID_CURR[0]
-
+   
 
 
 if __name__ == '__main__':
