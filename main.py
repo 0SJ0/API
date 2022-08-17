@@ -10,6 +10,9 @@ import pandas as pd
 
 #S3 connexion
 #Téléchargement data plus modèle
+S3_connexion=0
+
+
 try :
     df = pd.read_csv(
         f"s3://scoring-credit/df_Xvalidation.csv",
@@ -26,8 +29,10 @@ try :
             "secret": "ukAH5YYujnRpu0M3y4k8JZYeZL3oTK3UTYKdhPmE",
      }
     )
+    S3_connexion=1
 except :
     print("Erreur")
+    S3_connexion=0
 
 
 #Application
@@ -51,7 +56,12 @@ def Prediction(id):
         if (score>60) : defaut_credit=1
         return jsonify({'Score' : score, "Defaut_credit" : defaut_credit})
     except :
-        return "erreur"
+        return S3_connexion+erreur
+    
+    
+    
+    
+df.SK_ID_CURR[0]
 
 
 
