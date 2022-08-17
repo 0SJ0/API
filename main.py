@@ -59,7 +59,8 @@ try :
 except :
     print("Erreur")
     
-
+    
+model = pd.read_pickle("Data/model.sav")
 
     
 
