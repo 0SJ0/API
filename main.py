@@ -8,22 +8,24 @@ import pandas as pd
 
 #S3 connexion
 #Téléchargement data plus modèle
+try :
+    df = pd.read_csv(
+        f"s3://scoring-credit/df_Xvalidation.csv",
+        storage_options={
+            "key": "AKIARWSZ2E3CBMBY3SFF",
+            "secret": "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",
+        },index_col=0
+    ).reset_index(drop=True)
 
-df = pd.read_csv(
-    f"s3://scoring-credit/df_Xvalidation.csv",
-    storage_options={
-        "key": "AKIARWSZ2E3CBMBY3SFF",
-        "secret": "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",
-    },index_col=0
-).reset_index(drop=True)
-
-model = pd.read_pickle(
-    f"s3://scoring-credit/model.sav",
-    storage_options={
-        "key": "AKIARWSZ2E3CBMBY3SFF",
-        "secret": "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",
-    }
-)
+    model = pd.read_pickle(
+        f"s3://scoring-credit/model.sav",
+        storage_options={
+            "key": "AKIARWSZ2E3CBMBY3SFF",
+            "secret": "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",
+     }
+    )
+except :
+    print("Erreur")
 
 
 #Application
@@ -39,12 +41,15 @@ def ID():
 
 @app.route('/ID/<id>', methods=['GET'])
 def Prediction(id):
-    ID=int(id) #100194
-    index=df[df["SK_ID_CURR"]==ID].index.values[0]
-    score=round(model.predict_proba(df.iloc[index:index+1,:])[0][1]*100)
-    defaut_credit=0
-    if (score>60) : defaut_credit=1
-    return jsonify({'Score' : score, "Defaut_credit" : defaut_credit})
+    try :
+        ID=int(id) #100194
+        index=df[df["SK_ID_CURR"]==ID].index.values[0]
+        score=round(model.predict_proba(df.iloc[index:index+1,:])[0][1]*100)
+        defaut_credit=0
+        if (score>60) : defaut_credit=1
+        return jsonify({'Score' : score, "Defaut_credit" : defaut_credit})
+    except :
+        return "erreur"
 
 
 
