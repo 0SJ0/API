@@ -3,3 +3,4 @@ flask==2.1.3
 gunicorn==20.1.0
 numpy==1.23.1
 fsspec
+python-dateutil>=2.7.3
