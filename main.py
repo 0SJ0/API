@@ -25,7 +25,6 @@ try :
     S3_connexion+=1
 except :
     print("Erreur")
-    S3_connexion=0
     
     
 try :
@@ -39,7 +38,6 @@ try :
     S3_connexion+=1
 except :
     print("Erreur")
-    S3_connexion=0
 
 
 #Application
