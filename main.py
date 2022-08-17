@@ -45,7 +45,13 @@ try :
 
     S3_connexion+=1
 except :
-    print("Erreur")    
+    print("Erreur")   
+    
+try :
+    model = pd.read_pickle("Data/model.sav")
+    S3_connexion+=1
+except :
+    print("Erreur")
     
     
 
