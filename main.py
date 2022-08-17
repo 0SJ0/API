@@ -56,7 +56,7 @@ def Prediction(id):
         if (score>60) : defaut_credit=1
         return jsonify({'Score' : score, "Defaut_credit" : defaut_credit})
     except :
-        return S3_connexion+erreur
+        return S3_connexion+"erreur"
     
     
     
