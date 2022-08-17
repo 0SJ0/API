@@ -1,7 +1,7 @@
 # Import libraries
 import numpy 
 from flask import Flask, request, jsonify
-import gunicor
+import gunicorn
 import fsspec
 import pickle
 import pandas as pd
