@@ -39,6 +39,15 @@ try :
 except :
     print("Erreur")
 
+    
+try :
+    df = pd.read_csv("Data/Test.csv")
+
+    S3_connexion+=1
+except :
+    print("Erreur")    
+    
+    
 
 #Application
 app = Flask(__name__)
