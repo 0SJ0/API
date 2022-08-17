@@ -17,7 +17,7 @@ try :
             "key": "AKIARWSZ2E3CBMBY3SFF",
             "secret": "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",
         },index_col=0
-    ).reset_index(drop=True,nrows=100)
+    ).reset_index(drop=True)
 
     model = pd.read_pickle(
         f"s3://scoring-credit/model.sav",
