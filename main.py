@@ -44,7 +44,7 @@ def Prediction(id):
     try :
         ID=int(id) #100194
         index=df[df["SK_ID_CURR"]==ID].index.values[0]
-        score=round(model.predict_proba(df.iloc[index:index+1,:])[0][1]*100)
+        score=round(model.predict_proba(df.iloc[index:index+1,:])[0][1]*100) #368305
         defaut_credit=0
         if (score>60) : defaut_credit=1
         return jsonify({'Score' : score, "Defaut_credit" : defaut_credit})
