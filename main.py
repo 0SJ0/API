@@ -42,23 +42,23 @@ except :
 
     
 try :
-    df = pd.read_csv("Data/Test.csv")
+    df = pd.read_csv("Data/data.csv",index_col=0).reset_index(drop=True)
 
     S3_connexion+=1
 except :
     print("Erreur")   
     
 try :
-    model = pd.read_pickle("Data/model.sav")
+    model = pd.read_pickle("Data/model_sav.zip",compression='zip')
     S3_connexion+=1
 except :
     print("Erreur")
     
-try :
-    model = pickle.load(open('Data/model.sav', 'rb')  )
-    S3_connexion+=1
-except :
-    print("Erreur")
+#try :
+#    model = pickle.load(open('Data/model.sav', 'rb')  )
+ #   S3_connexion+=1
+#except :
+#    print("Erreur")
     
     
 model = pd.read_pickle("Data/model.sav")
