@@ -54,13 +54,13 @@ except :
     print("Erreur")
     
 try :
-    model = pickle.load("Data/model.sav")
+    model = pickle.load(open('Data/model.sav', 'rb')  )
     S3_connexion+=1
 except :
     print("Erreur")
     
 
-    
+
     
 
 #Application
