@@ -1,72 +1,55 @@
+# Import libraries
 import numpy as np
 from flask import Flask, request, jsonify
-import pandas as pd
-import requests
-import urllib.request as urllib2
 import pickle
+import pandas as pd
+#import urllib.request as urllib2
+#import requests
+
+#S3 connexion
+#Téléchargement data plus modèle
+
+df = pd.read_csv(
+    f"s3://scoring-credit/df_Xvalidation.csv",
+    storage_options={
+        "key": "AKIARWSZ2E3CBMBY3SFF",
+        "secret": "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",
+    },index_col=0
+).reset_index(drop=True)
+
+model = pd.read_pickle(
+    f"s3://scoring-credit/model.sav",
+    storage_options={
+        "key": "AKIARWSZ2E3CBMBY3SFF",
+        "secret": "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",
+    }
+)
+
+
+#Application
 app = Flask(__name__)
 
-
-#Chargement Modèle
-#target_url= 'https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav'
-#filename = urllib2.urlopen(target_url)
-
-#model = pickle.load(open('model.pkl', 'rb'))
-a=1
-
-
-try :
-    target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/model.sav"
-    fichier= urllib2.urlopen(target_url)
-    model = pd.read_pickle(fichier)
-    a=1
-except : 
-    print(pickle.load)
-    a=0
-
-
-
-
-#Chargement dataset
-target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/df_Xvalidation.txt"
-data = urllib2.urlopen(target_url) # it's a file like object and works just like a file
-df = pd.read_csv(data, sep=',',index_col=0)
-df=df.reset_index(drop=True)
-df=df.iloc[:,0:]
-
-
-
-
 @app.route('/')
-def index():
-    if(a==1) :
-        return 'YES WORK'
-    else :
-        return 'NO NO WORK'
-    
+def hello_world():
+    return 'Bienvenue sur le modèle de scoring'
+
 @app.route('/ID')
 def ID():
     return 'ID du client'
 
 @app.route('/ID/<id>', methods=['GET'])
 def Prediction(id):
-    target_url="https://scoring-credit.s3.eu-west-3.amazonaws.com/df_Xvalidation.txt"
-    data = urllib2.urlopen(target_url) # it's a file like object and works just like a file
-    df = pd.read_csv(data, sep=',',index_col=0)
-    df=df.reset_index(drop=True)
-    df=df.iloc[:,0:]
     ID=int(id) #100194
-    try :
-        ID=int(id) #100194
-        index=df[df["SK_ID_CURR"]==ID].index.values[0] #102616
-        #index=1
-    except :
-        index=0
-    proba=index
-    #proba=model.predict_proba(df.iloc[index:index+1,:])[0][1]
-    return jsonify({'proba' : proba})
+    index=df[df["SK_ID_CURR"]==ID].index.values[0]
+    score=round(model.predict_proba(df.iloc[index:index+1,:])[0][1]*100)
+    defaut_credit=0
+    if (score>60) : defaut_credit=1
+    return jsonify({'Score' : score, "Defaut_credit" : defaut_credit})
 
 
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+    app.run()
+    
+    
+#Fin
