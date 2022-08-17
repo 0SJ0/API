@@ -22,6 +22,13 @@ try :
         },index_col=0
     ).reset_index(drop=True)
 
+    S3_connexion+=1
+except :
+    print("Erreur")
+    S3_connexion=0
+    
+    
+try :
     model = pd.read_pickle(
         f"s3://scoring-credit/model.sav",
         storage_options={
@@ -29,7 +36,7 @@ try :
             "secret": "ukAH5YYujnRpu0M3y4k8JZYeZL3oTK3UTYKdhPmE",
      }
     )
-    S3_connexion=1
+    S3_connexion+=1
 except :
     print("Erreur")
     S3_connexion=0
