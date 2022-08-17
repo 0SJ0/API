@@ -54,12 +54,12 @@ try :
 except :
     print("Erreur")
     
-#try :
-#    model = pickle.load(open('Data/model.sav', 'rb')  )
- #   S3_connexion+=1
-#except :
-#    print("Erreur")
-    
+try :
+    model = pickle.load(open('Data/model.sav', 'rb')  )
+    S3_connexion+=1
+except :
+    print("Erreur")
+   
     
 model = pd.read_pickle("Data/model.sav")
 
