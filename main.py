@@ -49,7 +49,7 @@ except :
     print("Erreur")   
     
 try :
-    model = pd.read_pickle("Data/model.sav.zip",compression='.zip')
+    model = pd.read_pickle("Data/model.sav.zip",compression='infer')
     S3_connexion+=1
 except :
     print("Erreur")
