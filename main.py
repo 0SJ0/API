@@ -4,6 +4,7 @@ from flask import Flask, request, jsonify
 import gunicorn
 import fsspec
 import pickle
+import imblearn
 import pandas as pd
 #import urllib.request as urllib2
 #import requests
