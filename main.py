@@ -14,31 +14,7 @@ import pandas as pd
 S3_connexion=0
 
 
-try :
-    df = pd.read_csv(
-        f"s3://scoring-credit/df_Xvalidation.csv",
-        storage_options={
-            "key": "AKIARWSZ2E3CBMBY3SFF",
-            "secret": "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",
-        },index_col=0
-    ).reset_index(drop=True)
 
-    S3_connexion+=1
-except :
-    print("Erreur")
-    
-    
-try :
-    model = pd.read_pickle(
-        f"s3://scoring-credit/model.sav",
-        storage_options={
-            "key": "AKIARWSZ2E3CBMBY3SFF",
-            "secret": "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",
-     }
-    )
-    S3_connexion+=1
-except :
-    print("Erreur")
 
     
 try :
