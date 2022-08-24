@@ -60,7 +60,7 @@ def Prediction(id):
         index=df[df["SK_ID_CURR"]==ID].index.values[0]
         score=round(model.predict_proba(df.iloc[index:index+1,:])[0][1]*100) #368305
         defaut_credit=0
-        if (score>70) : defaut_credit=1
+        if (score>30) : defaut_credit=1
         return jsonify({'Score' : score, "Defaut_credit" : defaut_credit})
     except :
         return jsonify({"erreur" : S3_connexion})
